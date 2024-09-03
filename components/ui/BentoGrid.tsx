@@ -7,6 +7,7 @@ import animationData from "@/data/confetti.json"
 import MagicButton from "./MagicButton";
 import { FaSubscript } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 export const BentoGrid = ({
   className,
   children,
@@ -73,7 +74,10 @@ export const BentoGridItem = ({
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute ">
           {img && (
-            <img
+            <Image
+              width={100} 
+              height={100}
+              layout="responsive"
               src={img}
               alt={img}
               className={cn(imgClassName, "object-cover object-center opacity-85 text-violet-800")}
@@ -89,10 +93,13 @@ export const BentoGridItem = ({
           <div className="w-full h-full absolute z-10">
 
             {spareImg && (
-              <img
+              <Image
+                width={100}
+                height={100}
+                layout="responsive"
                 src={spareImg}
                 alt={spareImg}
-                className="object-cover object-center w-full h-full"
+                className="w-full h-full"
               />
             )}
           </div>

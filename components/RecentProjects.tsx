@@ -1,5 +1,6 @@
 import { projects } from '@/data'
 import dynamic from "next/dynamic";
+import Image from 'next/image';
 const PinContainer = dynamic(
     () => import("./ui/3d-pin").then((mod) => mod.PinContainer),
     { ssr: false }
@@ -19,15 +20,22 @@ const RecentProjects = () => {
                         <PinContainer title={link} href={link} target={"_blank"} >
                             <div className='relative flex items-center justify-center sm:w-[570px] w-[80vw] sm:h-[40vh] overflow-hidden h-[30vh] mb-4'>
                                 <div className='w-full h-full relative lg:rounded-3xl overflow-hidden bg-[#13162d]'>
-                                    <img
+                                    <Image
+                                        layout="responsive"
+                                        width={100}
+                                        height={100}
                                         src="/bg.png"
                                         alt="bg-img"
-                                        className={`w-full h-full ${index === 0 || index === 1 ? 'object-cover' : ''}`}
+                                        className={`w-full h-full`}
                                     />
                                 </div>
-                                <img src={img} alt={title} className='z-10 absolute top-0 w-full h-full ' />
+                                <Image
+                                    layout="fill"  // Changed from "responsive" to "fill"
+                                    src={img}
+                                    alt={title}
+                                    className={`z-10 absolute top-0 w-full h-full `}
+                                />
                             </div>
-
                             <h1 className='font-bold lg:text-2xl text-base md:text-xl line-clamp-1 '>{title} </h1>
                             <p className='lg:text-xl lg:font-normal font-light text-sm line-clamp-2'> {des} </p>
                             <div className="flex items-center justify-between mt-7 mb-3">
@@ -35,7 +43,7 @@ const RecentProjects = () => {
                                     {iconLists.map((icon, index) => (
                                         <div key={icon} className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center 
                                         items-center" style={{ transform: `translateX(-${5 * index * 2}px)` }}>
-                                            <img src={icon} alt={icon} className='p-2' />
+                                            <Image layout="responsive" width={100} height={100} src={icon} alt={icon} className='p-2' />
                                         </div>
                                     ))}
                                 </div>
