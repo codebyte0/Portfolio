@@ -6,7 +6,7 @@ const nextConfig = {
   // other configurations...
 };
 
-export default withSentryConfig(nextConfig, {
+const sentryConfig = {
   org: "code-byte",
   project: "javascript-nextjs",
   silent: !process.env.CI,
@@ -17,4 +17,6 @@ export default withSentryConfig(nextConfig, {
   hideSourceMaps: true,
   disableLogger: true,
   automaticVercelMonitors: true,
-});
+};
+
+export default withSentryConfig(nextConfig, sentryConfig);
