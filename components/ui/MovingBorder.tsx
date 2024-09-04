@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -8,6 +8,15 @@ import {
   useTransform,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  borderRadius?: string;
+  as?: React.ElementType;
+  containerClassName?: string;
+  borderClassName?: string;
+  duration?: number;
+  className?: string;
+}
 
 export function Button({
   borderRadius = "1.75rem",
@@ -18,27 +27,14 @@ export function Button({
   duration,
   className,
   ...otherProps
-}: {
-  borderRadius?: string;
-  children: React.ReactNode;
-  as?: React.ElementType;
-  containerClassName?: string;
-  borderClassName?: string;
-  duration?: number;
-  className?: string;
-  [key: string]: any;
-}) {
-  const [dark, setdark] = useState(true);
+}: ButtonProps) {
+  const [dark, setDark] = useState(true);
 
-    useEffect(() => {
-      let mode = localStorage.getItem("theme") || "system";
-      if (mode === "dark") {
-        setdark(true);
-      } else {
-        setdark(false);
-      }
-    }, []);
-  
+  useEffect(() => {
+    const mode = localStorage.getItem("theme") || "system";
+    setDark(mode === "dark");
+  }, []);
+
   return (
     <Component
       className={cn(
@@ -57,7 +53,10 @@ export function Button({
         <MovingBorder duration={duration} rx="30%" ry="30%">
           <div
             className={cn(
-              "h-20 w-20 dark:opacity-[0.8] bg-[radial-gradient(var(--violet-500)_40%,transparent_60%)]",
+              "h-20 w-20",
+              dark
+                ? "bg-[radial-gradient(var(--violet-500)_40%,transparent_60%)] dark:opacity-80"
+                : "bg-dot-white-100",
               borderClassName
             )}
           />
@@ -66,11 +65,11 @@ export function Button({
 
       <div
         className={cn(
-          "relative dark:bg-slate-900/[0.8]",
-          "text-black-100 dark:text-white",
+          "relative",
+          dark ? "dark:bg-slate-900/[0.8] " : "",
+          "text-black dark:text-white",
           "border border-slate-900 backdrop-blur-xl",
           "flex items-center justify-center w-full h-full text-sm antialiased",
-          dark ? "" : "bg-dot-white-100",
           className
         )}
         style={{
@@ -83,20 +82,21 @@ export function Button({
   );
 }
 
+interface MovingBorderProps {
+  children: React.ReactNode;
+  duration?: number;
+  rx?: string;
+  ry?: string;
+}
+
 export const MovingBorder = ({
   children,
   duration = 2000,
   rx,
   ry,
   ...otherProps
-}: {
-  children: React.ReactNode;
-  duration?: number;
-  rx?: string;
-  ry?: string;
-  [key: string]: any;
-}) => {
-  const pathRef = useRef<any>();
+}: MovingBorderProps) => {
+  const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
@@ -109,11 +109,11 @@ export const MovingBorder = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
+    (val) => pathRef.current?.getPointAtLength(val).x || 0
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
+    (val) => pathRef.current?.getPointAtLength(val).y || 0
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
