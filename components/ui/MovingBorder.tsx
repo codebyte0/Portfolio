@@ -28,7 +28,7 @@ export function Button({
   className?: string;
   [key: string]: any;
 }) {
-  const [dark, setdark] = useState(false);
+  const [dark, setdark] = useState(true);
 
     useEffect(() => {
       let mode = localStorage.getItem("theme") || "system";

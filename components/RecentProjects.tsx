@@ -33,7 +33,7 @@ const RecentProjects = () => {
                                     layout="fill"  // Changed from "responsive" to "fill"
                                     src={img}
                                     alt={title}
-                                    className={`z-10 absolute top-0 w-full h-full `}
+                                    className={`z-10 absolute top-0 ${index===0 || index===1 ? "w-full h-full" : " object-cover object-top "}`}
                                 />
                             </div>
                             <h1 className='font-bold lg:text-2xl text-base md:text-xl line-clamp-1 '>{title} </h1>
