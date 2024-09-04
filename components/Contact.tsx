@@ -1,11 +1,13 @@
-import { useState, useRef, FormEvent, useEffect } from "react";
+import React, { Suspense, lazy, useState, useRef, FormEvent, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "@/hoc";
 import { slideIn } from "../lib/motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+// Lazy load EarthCanvas
+const EarthCanvas = lazy(() => import("./canvas/Earth"));
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -157,7 +159,9 @@ const Contact = () => {
           </motion.div>
 
           <motion.div variants={slideIn("right", "tween", 0.2, 1)} className="xl:flex-1 xl:h-auto md:h-[550px] h-[450px]">
-            <EarthCanvas />
+            <Suspense fallback={<div>Loading...</div>}>
+              <EarthCanvas />
+            </Suspense>
           </motion.div>
         </div>
       </div>

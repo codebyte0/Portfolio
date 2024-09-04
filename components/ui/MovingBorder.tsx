@@ -55,7 +55,7 @@ export function Button({
             className={cn(
               "h-20 w-20",
               dark
-                ? "bg-[radial-gradient(var(--violet-500)_40%,transparent_60%)] dark:opacity-80"
+                ? "!bg-[radial-gradient(var(--violet-500)_40%,transparent_60%)] dark:opacity-80"
                 : "bg-dot-white-100",
               borderClassName
             )}
@@ -66,7 +66,6 @@ export function Button({
       <div
         className={cn(
           "relative",
-          dark ? "dark:bg-slate-900/[0.8] " : "",
           "text-black dark:text-white",
           "border border-slate-900 backdrop-blur-xl",
           "flex items-center justify-center w-full h-full text-sm antialiased",
