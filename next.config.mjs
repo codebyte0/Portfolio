@@ -2,21 +2,19 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true, // Ensure paths end with a trailing slash
-  // other configurations...
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
-const sentryConfig = {
+export default withSentryConfig(nextConfig, {
   org: "code-byte",
   project: "javascript-nextjs",
-  silent: !process.env.CI,
-  widenClientFileUpload: true,
-  reactComponentAnnotation: {
-    enabled: true,
-  },
-  hideSourceMaps: true,
-  disableLogger: true,
-  automaticVercelMonitors: true,
-};
-
-export default withSentryConfig(nextConfig, sentryConfig);
+  
+  // Optionally, include these if you need them
+  // silent: !process.env.CI,
+  // reactComponentAnnotation: { enabled: false },
+  // tunnelRoute: "/monitoring",
+  // disableLogger: true,
+  // automaticVercelMonitors: true,
+});

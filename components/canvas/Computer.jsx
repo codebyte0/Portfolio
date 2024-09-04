@@ -51,11 +51,11 @@ const Computers = ({ screenSize }) => {
         shadow-mapSize={2048}
       />
       <pointLight 
-        intensity={dark ? 1.7 : 1.9} 
+        intensity={dark ? 1.7 : 1.7} 
         color={dark ? "#D8BFD8" : "violet"}  // Light purple for dark mode
       />
       <ambientLight 
-        intensity={dark ? 0.6 : 2} 
+        intensity={dark ? 0.6 : 1} 
         color={dark ? "#D8BFD8" : "violet"} // Light purple tint for dark mode
       />
       <primitive
