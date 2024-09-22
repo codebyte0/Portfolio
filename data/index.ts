@@ -50,7 +50,7 @@ export const navItems = [
   
     {
       id: 5,
-      title: "Currently building a JS Animation library",
+      title: "Currently building a Full stack E-commerce store",
       description: "The Inside Scoop",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 !max-w-[60%]",
@@ -84,7 +84,7 @@ export const navItems = [
       title: "Meta Verse - VR Games and Movies",
       des: "This project is a sleek and modern frontend user interface for a virtual reality (VR) games and movies platform. It showcases a fully responsive design with engaging visual elements and animations.",
       img: "/metaverse.png",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/c.svg"],
       link: "https://codebyte0.github.io/meta-verse-website/",
     },
     {
@@ -92,7 +92,7 @@ export const navItems = [
       title: "<PassCB /> - Password Manager",
       des: "A sleek and efficient password manager built with React, utilizing local storage for secure password management. This project provides a user-friendly interface to store and manage passwords, offering features such as adding, editing, and deleting entries.",
       img: "/pass2.png",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/c.svg"],
       link: "https://codebyte0.github.io/Password_Manager-React/",
     },
     {
@@ -100,7 +100,7 @@ export const navItems = [
       title: "GET-ME-A-CHAI",
       des: " A crowdfunding platform for creators with dynamic user profiles, secure authentication, and seamless user experience. Features Dynamic Routing Secure Authentication Profile Customization View Supporters Data Error Handling Payment Integration Technologies Next.js, Database: MongoDB, Authentication: Next-auth/Authjs, Payment Gateway: Stripe",
       img: "/fundprojects.png",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg",],
       link: "https://github.com/codebyte0/get-me-a-chai",
     },
   ];
