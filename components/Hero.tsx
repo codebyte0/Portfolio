@@ -31,7 +31,7 @@ const Hero = () => {
                                 <span className="text-[#8349e0] font-extrabold font"> Hasnain</span>
                             </h1>
                             <p className="mt-2 text-black-100 dark:text-white-100 sm:w-[60%] w-[95%] pr-2">
-                                I develop modern websites, web interfaces, web-applications, and landing pages
+                                I develop modern websites, web-applications, and landing pages
                             </p>
                             <div className="md:-my-4 my-3">
                                 <a href="#projects">

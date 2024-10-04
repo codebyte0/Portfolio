@@ -10,16 +10,16 @@ const Approach = () => {
         <Card title="Planning & Strategy"
           icon={<AceternityIcon order="Phase-1" />}
           description="We'll collaborate to map out your website's goals, target audience, and key functionalities. We'll discuss things like site structure, navigation, and content requirements."
-          >
+        >
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-emerald-900"
           />
         </Card>
         <Card title="Development & Progress Updates"
-          icon={<AceternityIcon order="Phase-2"/>}
+          icon={<AceternityIcon order="Phase-2" />}
           description="Once we agree on the plan, I cue my lofi playlist and dive into coding. From initial sketches to polished code, I keep you updated every step of the way."
-          >
+        >
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-black"
@@ -31,7 +31,7 @@ const Approach = () => {
           />
         </Card>
         <Card title="Development & Launch" icon={<AceternityIcon order="Phase-3" />}
-        description="This is where the magic happens! Based on the approved design, I'll translate everything into functional code, building your website from the ground up."
+          description="This is where the magic happens! Based on the approved design, I'll translate everything into functional code, building your website from the ground up."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -53,7 +53,7 @@ const Card = ({
   title: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
-  description?:string;
+  description?: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
   return (
@@ -80,13 +80,16 @@ const Card = ({
       </AnimatePresence>
 
       <div className="relative z-20">
-        <div className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center">
-          {icon}
+        <div className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center flex-col gap-y-6">
+          <div>
+            {icon}
+          </div>
+          <div className="text-lg text-white z-50">Hover to reveal</div>
         </div>
         <h2 className="dark:text-white text-3xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4 font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center">
           {title}
         </h2>
-        <h2 className="text-sm dark:text-white opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center" style={{ color: "#e4ecff"}}>
+        <h2 className="text-sm dark:text-white opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center" style={{ color: "#e4ecff" }}>
           {description}
         </h2>
       </div>
